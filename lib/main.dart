@@ -15,9 +15,6 @@ void main() async {
   final supabaseUrl = dotenv.env['SUPABASE_URL']!;
   final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY']!;
 
-  print(supabaseAnonKey);
-  print(supabaseUrl);
-
   await Supabase.initialize(
     url: supabaseUrl,
     anonKey: supabaseAnonKey,
