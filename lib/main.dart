@@ -5,7 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'data/repositories/todo_repositories.dart';
 import 'viewmodels/todo_viewmodel.dart';
-import 'views/todo_page.dart';
+import 'views/splash_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: TodoFormPage(),
+        home: SplashView(),
       ),
     );
   }
