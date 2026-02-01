@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/views/explore_view.dart';
 import 'package:my_app/views/story_overview_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -72,7 +73,7 @@ class HomeView extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: _bottomNav(),
+        bottomNavigationBar: _bottomNav(context),
       ),
     );
   }
@@ -220,10 +221,21 @@ class HomeView extends StatelessWidget {
   }
 
   /// ⬇️ Bottom Nav (UI only)
-  Widget _bottomNav() {
+  Widget _bottomNav(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: 0,
       type: BottomNavigationBarType.fixed,
+      onTap: (index) {
+      if (index == 2) {
+        // Explore tab
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const ExploreView(),
+          ),
+        );
+      }
+    },
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Story'),
