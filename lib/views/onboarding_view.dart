@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/views/permission_prompt_view.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
@@ -60,7 +61,12 @@ class OnboardingView extends StatelessWidget {
                     elevation: 4,
                   ),
                   onPressed: () {
-                    // TODO: Navigate to next onboarding or home
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const PermissionPromptView(),
+                      ),
+                    );
                   },
                   child: const Text(
                     'Continue',
