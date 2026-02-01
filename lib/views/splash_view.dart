@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'todo_page.dart';
+import 'package:my_app/views/onboarding_view.dart';
 import '../main.dart';
 import '../core/audio/background_music_handler.dart';
 
@@ -23,7 +23,7 @@ class _SplashViewState extends State<SplashView> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => const TodoFormPage(),
+          builder: (_) => const OnboardingView(),
         ),
       );
     });
