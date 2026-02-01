@@ -48,9 +48,12 @@ class MyApp extends StatelessWidget {
           create: (_) => TodoViewModel(TodoRepository())..loadTodos(),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+          theme: ThemeData(
+            fontFamily: 'Poppins',
+          ),
         debugShowCheckedModeBanner: false,
-        home: SplashView(),
+        home: const SplashView(),
       ),
     );
   }

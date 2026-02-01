@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/views/home_view.dart';
 
 class PermissionPromptView extends StatelessWidget {
   const PermissionPromptView({super.key});
@@ -98,7 +99,12 @@ class PermissionPromptView extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 14),
                         ),
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const HomeView(),
+                            ),
+                          );
                         },
                         child: const Text('Not Now'),
                       ),
