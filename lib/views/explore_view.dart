@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/views/tag_category_result_view.dart';
 
 class ExploreView extends StatelessWidget {
   const ExploreView({super.key});
@@ -66,12 +67,39 @@ class ExploreView extends StatelessWidget {
               const SizedBox(height: 12),
 
               Row(
-                children: const [
-                  _BrowseChip(icon: Icons.public, label: 'Regions'),
-                  SizedBox(width: 10),
-                  _BrowseChip(icon: Icons.masks, label: 'Cultures'),
-                  SizedBox(width: 10),
-                  _BrowseChip(icon: Icons.menu_book, label: 'Themes'),
+                children:  [
+                  Row(
+                    children: [
+                      _BrowseChip(
+                        icon: Icons.public,
+                        label: 'Regions',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const TagCategoryResultView(),
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(width: 10),
+                      _BrowseChip(
+                        icon: Icons.masks,
+                        label: 'Cultures',
+                        onTap: () {
+                          // TODO: push CulturesView
+                        },
+                      ),
+                      const SizedBox(width: 10),
+                      _BrowseChip(
+                        icon: Icons.menu_book,
+                        label: 'Themes',
+                        onTap: () {
+                          // TODO: push ThemesView
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
 
@@ -173,26 +201,35 @@ class ExploreView extends StatelessWidget {
 class _BrowseChip extends StatelessWidget {
   final IconData icon;
   final String label;
+  final VoidCallback onTap;
 
-  const _BrowseChip({required this.icon, required this.label});
+  const _BrowseChip({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.6),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, size: 18, color: const Color(0xFF5A5A5A)),
-          const SizedBox(width: 6),
-          Text(
-            label,
-            style: const TextStyle(fontWeight: FontWeight.w500),
-          ),
-        ],
+    return InkWell(
+      borderRadius: BorderRadius.circular(20),
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.6),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, size: 18, color: const Color(0xFF5A5A5A)),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: const TextStyle(fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
       ),
     );
   }
