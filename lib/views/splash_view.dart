@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'todo_page.dart';
+import '../main.dart';
+import '../core/audio/background_music_handler.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -12,8 +14,10 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
+    
+    _startBackgroundMusic();
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 10), () {
       if (!mounted) return;
 
       Navigator.pushReplacement(
@@ -23,6 +27,16 @@ class _SplashViewState extends State<SplashView> {
         ),
       );
     });
+  }
+
+    Future<void> _startBackgroundMusic() async {
+    final handler = audioHandler as BackgroundMusicHandler;
+
+    // Prevent reloading if already playing
+    if (!handler.playbackState.value.playing) {
+      await handler.loadBackgroundMusic();
+      handler.play();
+    }
   }
 
   @override
