@@ -34,7 +34,7 @@ class _SplashViewState extends State<SplashView> {
 
     // Prevent reloading if already playing
     if (!handler.playbackState.value.playing) {
-      await handler.loadBackgroundMusic();
+      await handler.loadAllSongs();
       handler.play();
     }
   }
