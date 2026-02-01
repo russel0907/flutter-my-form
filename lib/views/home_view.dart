@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'story_overview_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -37,6 +38,7 @@ class HomeView extends StatelessWidget {
 
                 /// 1️⃣ Continue Last Story
                 _storyCard(
+                  context: context,
                   title: 'The Enchanted Journey',
                   subtitle: 'Continue Your Adventure',
                   buttonText: 'Resume',
@@ -56,6 +58,7 @@ class HomeView extends StatelessWidget {
                 const SizedBox(height: 12),
 
                 _storyCard(
+                  context: context,
                   title: 'Realm of the Lost Isles',
                   subtitle: 'Discover a Hidden World',
                   buttonText: 'Start',
@@ -95,6 +98,7 @@ class HomeView extends StatelessWidget {
 
   /// 📖 Story Card
   Widget _storyCard({
+    required BuildContext context,
     required String title,
     required String subtitle,
     required String buttonText,
@@ -155,7 +159,14 @@ class HomeView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(22),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const StoryOverviewView(),
+                            ),
+                          );
+                },
                 child: Text(
                     style: const TextStyle(color: Colors.white), buttonText),
               ),
