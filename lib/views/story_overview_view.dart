@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/views/story_chapter_reading_view.dart';
 
 class StoryOverviewView extends StatelessWidget {
   const StoryOverviewView({super.key});
@@ -108,7 +109,12 @@ class StoryOverviewView extends StatelessWidget {
                         icon: Icons.play_arrow_rounded,
                         color: const Color(0xFF2E7D32), // green
                         onPressed: () {
-                          // TODO: start story
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const StoryChapterReadingView(),
+                            ),
+                          );
                         },
                       ),
                       const SizedBox(height: 12),
